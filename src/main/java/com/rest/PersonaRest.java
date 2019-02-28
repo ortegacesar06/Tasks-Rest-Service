@@ -70,13 +70,12 @@ public class PersonaRest {
     }
     
     @PUT
-    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response modificarPersona(@PathParam("id") Long id, Persona persona){
+    public Response modificarPersona(Persona persona){
         try {
             sp.fijarPersona(null);
-            sp.fijarPersona(sp.obtener(id));
+            sp.fijarPersona(sp.obtener(persona.getId_persona()));
             sp.getPersona().setDni(persona.getDni());
             sp.getPersona().setNombres(persona.getNombres());
             sp.getPersona().setApellidos(persona.getApellidos());

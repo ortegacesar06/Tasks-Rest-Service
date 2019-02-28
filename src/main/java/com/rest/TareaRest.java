@@ -94,13 +94,12 @@ public class TareaRest {
     }
     
     @PUT
-    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response modificarTarea(@PathParam("id") Long id, Tarea tarea){
+    public Response modificarTarea(Tarea tarea){
         try {
             st.fijarTarea(null);
-            st.fijarTarea(st.obtener(id));
+            st.fijarTarea(st.obtener(tarea.getId_tarea()));
 
             st.getTarea().setTitulo(tarea.getTitulo());
             st.getTarea().setDescripcion(tarea.getDescripcion());

@@ -95,13 +95,12 @@ public class ComentarioRest {
     }
     
     @PUT
-    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response modificarComentario(@PathParam("id") Long id, Comentario comentario){
+    public Response modificarComentario(Comentario comentario){
         try {
             sc.fijarComentario(null);
-            sc.fijarComentario(sc.obtener(id));
+            sc.fijarComentario(sc.obtener(comentario.getId_comentario()));
             sc.getComentario().setContenido(comentario.getContenido());
 
             if(sc.guardar()){
